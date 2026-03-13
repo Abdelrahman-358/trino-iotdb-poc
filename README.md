@@ -90,6 +90,8 @@ SELECT * FROM table1;
 
 SELECT humidity FROM table1;
 ```
+## Sample output 
+![Trino-IoTDB.png](docs/Trino-IoTDB.png)docs/Trino-IoTDB.png
 
 ## License
 
