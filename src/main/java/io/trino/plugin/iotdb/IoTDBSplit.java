@@ -6,12 +6,12 @@ import io.trino.spi.connector.ConnectorSplit;
 
 import java.util.Map;
 
-public class IotdbSplit implements ConnectorSplit {
+public class IoTDBSplit implements ConnectorSplit {
 	
-	public static final IotdbSplit INSTANCE = new IotdbSplit();
+	public static final IoTDBSplit INSTANCE = new IoTDBSplit();
 	
 	@JsonCreator
-	public IotdbSplit() {
+	public IoTDBSplit() {
 	}
 	
 	@JsonProperty

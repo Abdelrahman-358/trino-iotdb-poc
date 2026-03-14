@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 
 import static java.util.Objects.requireNonNull;
 
-public class IotdbRecordSetProvider implements ConnectorRecordSetProvider {
+public class IoTDBRecordSetProvider implements ConnectorRecordSetProvider {
 	
-	private final IotdbConfig config;
+	private final IoTDBConfig config;
 	
-	public IotdbRecordSetProvider(IotdbConfig config) {
+	public IoTDBRecordSetProvider(IoTDBConfig config) {
 		this.config = requireNonNull(config, "config is null");
 	}
 	
@@ -29,10 +29,10 @@ public class IotdbRecordSetProvider implements ConnectorRecordSetProvider {
 			ConnectorTableHandle table,
 			List<? extends ColumnHandle> columns) {
 		
-		IotdbTableHandle tableHandle = (IotdbTableHandle) table;
-		List<IotdbColumnHandle> columnHandles = columns.stream()
-				.map(IotdbColumnHandle.class::cast)
+		IoTDBTableHandle tableHandle = (IoTDBTableHandle) table;
+		List<IoTDBColumnHandle> columnHandles = columns.stream()
+				.map(IoTDBColumnHandle.class::cast)
 				.collect(Collectors.toList());
-		return new IotdbRecordSet(config, tableHandle, columnHandles);
+		return new IoTDBRecordSet(config, tableHandle, columnHandles);
 	}
 }

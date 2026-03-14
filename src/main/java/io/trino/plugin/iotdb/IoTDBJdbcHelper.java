@@ -12,7 +12,7 @@ import java.util.List;
  * TODO: This class is a temporary workaround for JDBC driver issue.
  *       It should be removed once the driver is fixed.
  */
-public class IotdbJdbcHelper {
+public class IoTDBJdbcHelper {
 	
 	private final String jdbcUrl;
 	
@@ -20,7 +20,7 @@ public class IotdbJdbcHelper {
 	
 	private final String password;
 	
-	public IotdbJdbcHelper(IotdbConfig config) {
+	public IoTDBJdbcHelper(IoTDBConfig config) {
 		this.jdbcUrl = config.getJdbcUrl();
 		this.user = config.getUser();
 		this.password = config.getPassword();

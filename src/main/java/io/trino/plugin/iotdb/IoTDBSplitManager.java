@@ -11,7 +11,7 @@ import io.trino.spi.connector.Constraint;
 
 import java.util.List;
 
-public class IotdbSplitManager implements ConnectorSplitManager {
+public class IoTDBSplitManager implements ConnectorSplitManager {
 	
 	@Override
 	public ConnectorSplitSource getSplits(
@@ -20,6 +20,6 @@ public class IotdbSplitManager implements ConnectorSplitManager {
 			ConnectorTableHandle tableHandle,
 			DynamicFilter dynamicFilter,
 			Constraint constraint) {
-		return new FixedSplitSource(List.of(IotdbSplit.INSTANCE));
+		return new FixedSplitSource(List.of(IoTDBSplit.INSTANCE));
 	}
 }

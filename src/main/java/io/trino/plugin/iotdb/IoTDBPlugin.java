@@ -5,10 +5,10 @@ import io.trino.spi.connector.ConnectorFactory;
 
 
 import java.util.List;
-public class IotdbPlugin implements Plugin {
+public class IoTDBPlugin implements Plugin {
 	@Override
 	public Iterable<ConnectorFactory> getConnectorFactories()  {
 		
-		return List.of(new IotdbConnectorFactory());
+		return List.of(new IoTDBConnectorFactory());
 	}
 }

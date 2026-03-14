@@ -8,7 +8,7 @@ import java.util.Map;
 
 import static java.util.Objects.requireNonNull;
 
-public class IotdbConnectorFactory implements ConnectorFactory {
+public class IoTDBConnectorFactory implements ConnectorFactory {
 	
 	@Override
 	public String getName() {
@@ -19,7 +19,7 @@ public class IotdbConnectorFactory implements ConnectorFactory {
 	public Connector create(String catalogName, Map<String, String> config, ConnectorContext context) {
 		requireNonNull(config, "config is null");
 		
-		IotdbConfig iotdbConfig = IotdbConfig.from(config);
-		return new IotdbConnector(iotdbConfig);
+		IoTDBConfig iotdbConfig = IoTDBConfig.from(config);
+		return new IoTDBConnector(iotdbConfig);
 	}
 }

@@ -27,12 +27,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class IotdbMetadata implements ConnectorMetadata {
+public class IoTDBMetadata implements ConnectorMetadata {
 	
-	private final IotdbJdbcHelper jdbc;
+	private final IoTDBJdbcHelper jdbc;
 	
-	public IotdbMetadata(IotdbConfig config) {
-		this.jdbc = new IotdbJdbcHelper(config);
+	public IoTDBMetadata(IoTDBConfig config) {
+		this.jdbc = new IoTDBJdbcHelper(config);
 	}
 	
 	@Override
@@ -65,14 +65,14 @@ public class IotdbMetadata implements ConnectorMetadata {
 				"SHOW TABLES FROM " + tableName.getSchemaName(), 1);
 		
 		if (tableNames.stream().anyMatch(t -> t.equalsIgnoreCase(tableName.getTableName()))) {
-			return new IotdbTableHandle(tableName.getSchemaName(), tableName.getTableName());
+			return new IoTDBTableHandle(tableName.getSchemaName(), tableName.getTableName());
 		}
 		return null; // table not found
 	}
 	
 	@Override
 	public ConnectorTableMetadata getTableMetadata(ConnectorSession session, ConnectorTableHandle table) {
-		IotdbTableHandle iotdbTable = (IotdbTableHandle) table;
+		IoTDBTableHandle iotdbTable = (IoTDBTableHandle) table;
 		List<ColumnMetadata> columns = getColumns(iotdbTable.getSchemaName(), iotdbTable.getTableName());
 		
 		return new ConnectorTableMetadata(
@@ -82,13 +82,13 @@ public class IotdbMetadata implements ConnectorMetadata {
 	
 	@Override
 	public Map<String, ColumnHandle> getColumnHandles(ConnectorSession session, ConnectorTableHandle tableHandle) {
-		IotdbTableHandle iotdbTable = (IotdbTableHandle) tableHandle;
+		IoTDBTableHandle iotdbTable = (IoTDBTableHandle) tableHandle;
 		List<ColumnMetadata> columns = getColumns(iotdbTable.getSchemaName(), iotdbTable.getTableName());
 		
 		Map<String, ColumnHandle> handles = new HashMap<>();
 		for (int i = 0; i < columns.size(); i++) {
 			ColumnMetadata col = columns.get(i);
-			handles.put(col.getName(), new IotdbColumnHandle(col.getName(), col.getType(), i));
+			handles.put(col.getName(), new IoTDBColumnHandle(col.getName(), col.getType(), i));
 		}
 		return handles;
 	}
@@ -96,7 +96,7 @@ public class IotdbMetadata implements ConnectorMetadata {
 	@Override
 	public ColumnMetadata getColumnMetadata(ConnectorSession session, ConnectorTableHandle tableHandle,
 			ColumnHandle columnHandle) {
-		IotdbColumnHandle col = (IotdbColumnHandle) columnHandle;
+		IoTDBColumnHandle col = (IoTDBColumnHandle) columnHandle;
 		return new ColumnMetadata(col.getColumnName(), col.getColumnType());
 	}
 	

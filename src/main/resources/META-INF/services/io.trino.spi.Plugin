@@ -1,2 +1,2 @@
-io.trino.plugin.iotdb.IotdbPlugin
+io.trino.plugin.iotdb.IoTDBPlugin
 

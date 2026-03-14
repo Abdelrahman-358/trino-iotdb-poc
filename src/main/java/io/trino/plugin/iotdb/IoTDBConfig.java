@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Map;
 
-public class IotdbConfig {
+public class IoTDBConfig {
 	
 	private final String jdbcUrl;
 	
@@ -12,7 +12,7 @@ public class IotdbConfig {
 	
 	private final String password;
 	
-	public IotdbConfig(String jdbcUrl, String user, String password) {
+	public IoTDBConfig(String jdbcUrl, String user, String password) {
 		this.jdbcUrl = jdbcUrl;
 		this.user = user;
 		this.password = password;
@@ -30,11 +30,11 @@ public class IotdbConfig {
 		return password;
 	}
 	
-	public static IotdbConfig from(Map<String, String> config) {
+	public static IoTDBConfig from(Map<String, String> config) {
 		String url = requireNonNull(config.get("iotdb.jdbc-url"), "Missing required config: iotdb.jdbc-url");
 		String user = requireNonNull(config.get("iotdb.user"), "Missing required config: iotdb.user");
 		String password = requireNonNull(config.get("iotdb.password"), "Missing required config: iotdb.password");
 		
-		return new IotdbConfig(url, user, password);
+		return new IoTDBConfig(url, user, password);
 	}
 }

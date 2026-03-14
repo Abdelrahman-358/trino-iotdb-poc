@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.trino.spi.connector.ColumnHandle;
 import io.trino.spi.type.Type;
 
-public class IotdbColumnHandle implements ColumnHandle {
+public class IoTDBColumnHandle implements ColumnHandle {
 	
 	private final String columnName;
 	
@@ -14,7 +14,7 @@ public class IotdbColumnHandle implements ColumnHandle {
 	private final int ordinalPosition;
 	
 	@JsonCreator
-	public IotdbColumnHandle(
+	public IoTDBColumnHandle(
 			@JsonProperty("columnName") String columnName,
 			@JsonProperty("columnType") Type columnType,
 			@JsonProperty("ordinalPosition") int ordinalPosition) {

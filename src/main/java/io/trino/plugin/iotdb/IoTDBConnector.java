@@ -8,18 +8,18 @@ import io.trino.spi.connector.ConnectorSplitManager;
 import io.trino.spi.connector.ConnectorTransactionHandle;
 import io.trino.spi.transaction.IsolationLevel;
 
-public class IotdbConnector implements Connector {
+public class IoTDBConnector implements Connector {
 	
-	private final IotdbMetadata metadata;
+	private final IoTDBMetadata metadata;
 	
-	private final IotdbSplitManager splitManager;
+	private final IoTDBSplitManager splitManager;
 	
-	private final IotdbRecordSetProvider recordSetProvider;
+	private final IoTDBRecordSetProvider recordSetProvider;
 	
-	public IotdbConnector(IotdbConfig config) {
-		this.metadata = new IotdbMetadata(config);
-		this.splitManager = new IotdbSplitManager();
-		this.recordSetProvider = new IotdbRecordSetProvider(config);
+	public IoTDBConnector(IoTDBConfig config) {
+		this.metadata = new IoTDBMetadata(config);
+		this.splitManager = new IoTDBSplitManager();
+		this.recordSetProvider = new IoTDBRecordSetProvider(config);
 	}
 	
 	@Override
@@ -27,7 +27,7 @@ public class IotdbConnector implements Connector {
 			IsolationLevel isolationLevel,
 			boolean readOnly,
 			boolean autoCommit) {
-		return IotdbTransactionHandle.INSTANCE;
+		return IoTDBTransactionHandle.INSTANCE;
 	}
 	
 	@Override

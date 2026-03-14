@@ -9,9 +9,9 @@ import io.trino.spi.type.Type;
 import java.sql.*;
 import java.util.List;
 
-public class IotdbRecordCursor implements RecordCursor {
+public class IoTDBRecordCursor implements RecordCursor {
 	
-	private final List<IotdbColumnHandle> columns;
+	private final List<IoTDBColumnHandle> columns;
 	
 	private final Connection connection;
 	
@@ -19,11 +19,11 @@ public class IotdbRecordCursor implements RecordCursor {
 	
 	private final ResultSet resultSet;
 	
-	public IotdbRecordCursor(IotdbConfig config, IotdbTableHandle table, List<IotdbColumnHandle> columns) {
+	public IoTDBRecordCursor(IoTDBConfig config, IoTDBTableHandle table, List<IoTDBColumnHandle> columns) {
 		this.columns = columns;
 		
 		try {
-			IotdbJdbcHelper jdbcHelper = new IotdbJdbcHelper(config);
+			IoTDBJdbcHelper jdbcHelper = new IoTDBJdbcHelper(config);
 			this.connection = jdbcHelper.getConnection();
 			
 			this.statement = connection.createStatement();
@@ -36,11 +36,11 @@ public class IotdbRecordCursor implements RecordCursor {
 		}
 	}
 	
-	private String buildSelectSql(IotdbTableHandle table, List<IotdbColumnHandle> columns) {
+	private String buildSelectSql(IoTDBTableHandle table, List<IoTDBColumnHandle> columns) {
 		if (columns.isEmpty()) {
 			return "SELECT * FROM " + table.getSchemaName() + "." + table.getTableName();
 		}
-		String cols = columns.stream().map(IotdbColumnHandle::getColumnName).reduce((a, b) -> a + ", " + b).orElse("*");
+		String cols = columns.stream().map(IoTDBColumnHandle::getColumnName).reduce((a, b) -> a + ", " + b).orElse("*");
 		return "SELECT " + cols + " FROM " + table.getSchemaName() + "." + table.getTableName();
 	}
 	
